@@ -2,11 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Trade With ITL | #1 Free Trading Signals Community</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -34,32 +35,6 @@
                 danger: "#f6465d",
               },
             },
-            animation: {
-              float: "float 6s ease-in-out infinite",
-              "pulse-glow": "pulseGlow 3s ease-in-out infinite",
-              "gradient-shift": "gradientShift 8s ease infinite",
-              "spin-slow": "spin 12s linear infinite",
-            },
-            keyframes: {
-              float: {
-                "0%, 100%": { transform: "translateY(0px)" },
-                "50%": { transform: "translateY(-20px)" },
-              },
-              pulseGlow: {
-                "0%, 100%": {
-                  boxShadow:
-                    "0 0 20px rgba(240, 185, 11, 0.3), 0 0 60px rgba(240, 185, 11, 0.1)",
-                },
-                "50%": {
-                  boxShadow:
-                    "0 0 40px rgba(240, 185, 11, 0.5), 0 0 80px rgba(240, 185, 11, 0.2)",
-                },
-              },
-              gradientShift: {
-                "0%, 100%": { backgroundPosition: "0% 50%" },
-                "50%": { backgroundPosition: "100% 50%" },
-              },
-            },
           },
         },
       };
@@ -70,6 +45,7 @@
         body {
           @apply bg-brand-dark text-white antialiased;
           background-color: #050507;
+          overflow-x: hidden;
         }
         ::selection {
           @apply bg-brand-accent/30 text-white;
@@ -83,83 +59,143 @@
           @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-accent via-yellow-300 to-brand-accent;
           background-size: 200% auto;
         }
-        .glow-border {
-          position: relative;
-        }
-        .glow-border::before {
-          content: "";
-          position: absolute;
-          inset: -1px;
-          border-radius: inherit;
-          padding: 1px;
-          background: linear-gradient(
-            135deg,
-            rgba(240, 185, 11, 0.5),
-            rgba(0, 212, 255, 0.3),
-            rgba(240, 185, 11, 0.5)
-          );
-          -webkit-mask:
-            linear-gradient(#fff 0 0) content-box,
-            linear-gradient(#fff 0 0);
-          mask:
-            linear-gradient(#fff 0 0) content-box,
-            linear-gradient(#fff 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          pointer-events: none;
-        }
-        .chart-line {
-          stroke-dasharray: 1000;
-          stroke-dashoffset: 1000;
-          animation: drawLine 3s ease-out forwards;
-        }
-        @keyframes drawLine {
-          to {
-            stroke-dashoffset: 0;
-          }
-        }
       }
     </style>
 
     <style>
-      .particles {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 0;
-        overflow: hidden;
-      }
-      .particle {
-        position: absolute;
-        width: 4px;
-        height: 4px;
-        background: rgba(240, 185, 11, 0.3);
-        border-radius: 50%;
-        animation: particleFloat 20s infinite;
-      }
-      @keyframes particleFloat {
-        0%,
-        100% {
-          transform: translateY(100vh) rotate(0deg);
-          opacity: 0;
-        }
-        10% {
-          opacity: 1;
-        }
-        90% {
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(-10vh) rotate(720deg);
-          opacity: 0;
-        }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
       }
       .avatar-ring {
         background: conic-gradient(from 0deg, #f0b90b, #00d4ff, #f0b90b);
         animation: spin 8s linear infinite;
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, #f0b90b 0%, #d4a009 100%);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 40px -10px rgba(240, 185, 11, 0.4);
+      }
+      .insta-btn {
+        background: linear-gradient(
+          45deg,
+          #f09433 0%,
+          #e6683c 25%,
+          #dc2743 50%,
+          #cc2366 75%,
+          #bc1888 100%
+        );
+        transition: all 0.3s ease;
+      }
+      .insta-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px -5px rgba(220, 39, 67, 0.4);
+      }
+      .wa-btn {
+        background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+        transition: all 0.3s ease;
+      }
+      .wa-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px -5px rgba(37, 211, 102, 0.4);
+      }
+      .blink-btn {
+        animation: blinkPulse 1.5s ease-in-out infinite;
+      }
+      @keyframes blinkPulse {
+        0%,
+        100% {
+          box-shadow:
+            0 0 0 0 rgba(240, 185, 11, 0.7),
+            0 0 20px rgba(240, 185, 11, 0.3);
+        }
+        50% {
+          box-shadow:
+            0 0 0 12px rgba(240, 185, 11, 0),
+            0 0 40px rgba(240, 185, 11, 0.6);
+        }
+      }
+      .profit-card {
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+      .profit-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 25px 50px -12px rgba(240, 185, 11, 0.15);
+      }
+      .profit-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          transparent 50%,
+          rgba(5, 5, 7, 0.9) 100%
+        );
+        z-index: 1;
+        pointer-events: none;
+      }
+      .profit-card img {
+        transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .profit-card:hover img {
+        transform: scale(1.1);
+      }
+      .profit-badge {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        z-index: 2;
+        background: rgba(14, 203, 129, 0.9);
+        backdrop-filter: blur(10px);
+        padding: 4px 12px;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: white;
+        border: 1px solid rgba(14, 203, 129, 0.3);
+      }
+      .profit-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        z-index: 2;
+      }
+      .marquee-container {
+        overflow: hidden;
+        position: relative;
+      }
+      .marquee-track {
+        display: flex;
+        gap: 20px;
+        animation: marqueeScroll 25s linear infinite;
+        width: max-content;
+      }
+      .marquee-track:hover {
+        animation-play-state: paused;
+      }
+      @keyframes marqueeScroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .screenshot-frame {
+        border: 1px solid rgba(240, 185, 11, 0.15);
+        border-radius: 16px;
+        overflow: hidden;
+        background: rgba(15, 15, 22, 0.6);
       }
       .ticker-wrap {
         position: fixed;
@@ -183,136 +219,92 @@
           transform: translateX(-50%);
         }
       }
-      .feature-icon {
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .feature-card:hover .feature-icon {
-        transform: scale(1.1) rotate(5deg);
-        filter: drop-shadow(0 0 20px rgba(240, 185, 11, 0.4));
-      }
-      .btn-primary {
-        background: linear-gradient(135deg, #f0b90b 0%, #d4a009 100%);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-      }
-      .btn-primary::after {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: linear-gradient(
-          45deg,
-          transparent,
-          rgba(255, 255, 255, 0.2),
-          transparent
-        );
-        transform: rotate(45deg);
-        transition: all 0.6s;
-        opacity: 0;
-      }
-      .btn-primary:hover::after {
-        animation: shimmer 0.6s ease-out;
-      }
-      .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 20px 40px -10px rgba(240, 185, 11, 0.4);
-      }
-      @keyframes shimmer {
-        0% {
-          transform: translateX(-100%) translateY(-100%) rotate(45deg);
-          opacity: 0;
+      /* Mobile hero compact */
+      @media (max-width: 640px) {
+        .hero-section {
+          padding-top: 5rem !important;
+          padding-bottom: 1rem !important;
         }
-        50% {
-          opacity: 1;
+        .hero-title {
+          font-size: 2.25rem !important;
+          line-height: 1.1 !important;
         }
-        100% {
-          transform: translateX(100%) translateY(100%) rotate(45deg);
-          opacity: 0;
+        .hero-subtitle {
+          font-size: 0.875rem !important;
+          margin-bottom: 1rem !important;
         }
-      }
-      .insta-btn {
-        background: linear-gradient(
-          45deg,
-          #f09433 0%,
-          #e6683c 25%,
-          #dc2743 50%,
-          #cc2366 75%,
-          #bc1888 100%
-        );
-        transition: all 0.3s ease;
-      }
-      .insta-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 30px -5px rgba(220, 39, 67, 0.4);
-      }
-      .profile-img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-      }
-
-      /* Blinking Telegram Button */
-      .blink-btn {
-        animation: blinkPulse 1.5s ease-in-out infinite;
-      }
-      @keyframes blinkPulse {
-        0%,
-        100% {
-          box-shadow:
-            0 0 0 0 rgba(240, 185, 11, 0.7),
-            0 0 20px rgba(240, 185, 11, 0.3);
+        .hero-avatar {
+          width: 7rem !important;
+          height: 7rem !important;
+          margin-bottom: 0.75rem !important;
         }
-        50% {
-          box-shadow:
-            0 0 0 12px rgba(240, 185, 11, 0),
-            0 0 40px rgba(240, 185, 11, 0.6);
+        .hero-bullets {
+          margin-bottom: 0.75rem !important;
+        }
+        .hero-bullets .bullet-text {
+          font-size: 0.8rem !important;
+        }
+        .hero-btns {
+          gap: 0.5rem !important;
+        }
+        .hero-btns a {
+          padding: 0.6rem 1rem !important;
+          font-size: 0.8rem !important;
+        }
+        .hero-btns svg {
+          width: 1rem !important;
+          height: 1rem !important;
+        }
+        .hero-badge {
+          margin-bottom: 0.75rem !important;
+          padding: 0.25rem 0.75rem !important;
+        }
+        .hero-badge-text {
+          font-size: 0.65rem !important;
+        }
+        .hero-footer-text {
+          font-size: 0.65rem !important;
+          margin-top: 0.5rem !important;
+        }
+        .floating-badge {
+          width: 2rem !important;
+          height: 2rem !important;
+        }
+        .floating-badge svg {
+          width: 1rem !important;
+          height: 1rem !important;
         }
       }
     </style>
     <base target="_blank" />
-    <base target="_blank" />
   </head>
-  <body class="min-h-screen relative overflow-x-hidden">
-    <!-- Animated Background Particles -->
-    <div class="particles" id="particles"></div>
-
-    <!-- Background Gradient Orbs -->
-    <div
-      class="fixed top-0 left-1/4 w-96 h-96 bg-brand-accent/5 rounded-full blur-3xl pointer-events-none"
-    ></div>
-    <div
-      class="fixed bottom-1/4 right-1/4 w-96 h-96 bg-brand-cyan/5 rounded-full blur-3xl pointer-events-none"
-    ></div>
-
+  <body class="min-h-screen relative">
     <!-- Navigation -->
     <nav
       class="fixed top-0 w-full z-40 border-b border-brand-border/30 backdrop-blur-xl bg-brand-dark/80"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
+        <div class="flex items-center justify-between h-14">
           <div class="flex items-center gap-2">
             <div
-              class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-accent to-orange-500 flex items-center justify-center font-bold text-brand-dark text-sm"
+              class="w-7 h-7 rounded-lg bg-gradient-to-br from-brand-accent to-orange-500 flex items-center justify-center font-bold text-brand-dark text-xs"
             >
               ITL
             </div>
-            <span class="font-display font-bold text-lg tracking-tight"
+            <span class="font-display font-bold text-base tracking-tight"
               >Trade With <span class="text-brand-accent">ITL</span></span
             >
           </div>
           <div class="hidden md:flex items-center gap-6">
             <a
+              href="#proof"
+              class="text-sm text-gray-400 hover:text-white transition-colors"
+              >Proof</a
+            >
+            <a
               href="#features"
               class="text-sm text-gray-400 hover:text-white transition-colors"
               >Features</a
-            >
-            <a
-              href="#results"
-              class="text-sm text-gray-400 hover:text-white transition-colors"
-              >Results</a
             >
             <a
               href="https://www.instagram.com/itl_trader_official?igsh=MWc1Y3d6eTNyMXlidA%3D%3D&utm_source=qr"
@@ -322,16 +314,16 @@
             >
             <a
               href="#join"
-              class="btn-primary px-5 py-2 rounded-full text-sm font-semibold text-brand-dark"
+              class="btn-primary px-4 py-1.5 rounded-full text-sm font-semibold text-brand-dark"
               >Join Free</a
             >
           </div>
           <button
             id="mobileMenuBtn"
-            class="md:hidden p-2 text-gray-400 hover:text-white"
+            class="md:hidden p-1.5 text-gray-400 hover:text-white"
           >
             <svg
-              class="w-6 h-6"
+              class="w-5 h-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -346,131 +338,98 @@
           </button>
         </div>
       </div>
-      <!-- Mobile Menu -->
       <div
         id="mobileMenu"
         class="hidden md:hidden border-t border-brand-border/30 bg-brand-dark/95 backdrop-blur-xl"
       >
-        <div class="px-4 py-4 space-y-3">
+        <div class="px-4 py-3 space-y-2">
           <a
-            href="#features"
-            class="block text-sm text-gray-400 hover:text-white py-2"
-            >Features</a
+            href="#proof"
+            class="block text-sm text-gray-400 hover:text-white py-1.5"
+            >Proof</a
           >
           <a
-            href="#results"
-            class="block text-sm text-gray-400 hover:text-white py-2"
-            >Results</a
+            href="#features"
+            class="block text-sm text-gray-400 hover:text-white py-1.5"
+            >Features</a
           >
           <a
             href="https://www.instagram.com/itl_trader_official?igsh=MWc1Y3d6eTNyMXlidA%3D%3D&utm_source=qr"
             target="_blank"
-            class="block text-sm text-gray-400 hover:text-brand-accent py-2"
+            class="block text-sm text-gray-400 hover:text-brand-accent py-1.5"
             >Instagram</a
-          >
-          <a
-            href="#join"
-            class="block btn-primary px-5 py-3 rounded-xl text-center text-sm font-semibold text-brand-dark mt-4"
-            >Join Free Channel</a
           >
         </div>
       </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 z-10">
+    <section class="hero-section relative pt-24 pb-4 px-4 sm:px-6 z-10">
       <div class="max-w-4xl mx-auto text-center">
         <!-- Badge -->
         <div
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-accent/10 border border-brand-accent/20 mb-8 hero-elem"
+          class="hero-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-accent/10 border border-brand-accent/20 mb-4"
         >
-          <span class="relative flex h-2 w-2">
+          <span class="relative flex h-1.5 w-1.5">
             <span
               class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75"
             ></span>
             <span
-              class="relative inline-flex rounded-full h-2 w-2 bg-brand-accent"
+              class="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand-accent"
             ></span>
           </span>
-          <span class="text-sm font-medium text-brand-accent"
+          <span class="hero-badge-text text-xs font-medium text-brand-accent"
             >#1 Most Profitable Trading Community</span
           >
         </div>
 
         <!-- Main Headline -->
         <h1
-          class="font-display text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6 hero-elem"
+          class="hero-title font-display text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-3"
         >
           <span class="text-white">Trade With</span><br />
-          <span class="text-gradient animate-gradient-shift">ITL</span>
+          <span class="text-gradient">ITL</span>
         </h1>
 
         <p
-          class="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-12 hero-elem"
+          class="hero-subtitle text-sm sm:text-lg text-gray-400 max-w-xl mx-auto mb-4"
         >
           Join
-          <span class="text-white font-semibold">5,000+ traders</span>
-          receiving daily high-accuracy signals. 100% Free. Zero hidden fees.
-          Real results.
+          <span class="text-white font-semibold">5,000+ traders</span> receiving
+          daily high-accuracy signals. 100% Free.
         </p>
 
-        <!-- Avatar / Brand Circle -->
-        <div class="relative w-48 h-48 sm:w-56 sm:h-56 mx-auto mb-10 hero-elem">
+        <!-- Avatar -->
+        <div
+          class="hero-avatar relative w-36 h-36 sm:w-48 sm:h-48 mx-auto mb-4"
+        >
           <div
             class="absolute inset-0 rounded-full avatar-ring opacity-60 blur-sm"
           ></div>
           <div
             class="absolute inset-1 rounded-full bg-brand-dark flex items-center justify-center overflow-hidden border-2 border-brand-border"
           >
-            <!-- PROFILE IMAGE: Replace the src below with your client's actual image URL or local path -->
             <img
               src="./profile.jpeg"
               alt="Trade With ITL Profile"
               class="profile-img"
+              style="object-fit: cover; width: 100%; height: 100%"
               onerror="
                 this.style.display = 'none';
                 this.nextElementSibling.style.display = 'flex';
               "
             />
-            <!-- Fallback content if image fails to load -->
             <div
               class="hidden absolute inset-0 bg-gradient-to-br from-brand-card to-brand-dark flex-col items-center justify-center"
             >
-              <svg
-                class="w-20 h-20 mb-2 opacity-50"
-                viewBox="0 0 200 200"
-                fill="none"
-              >
-                <circle
-                  cx="100"
-                  cy="80"
-                  r="35"
-                  fill="url(#grad1)"
-                  opacity="0.8"
-                />
-                <path
-                  d="M65 120 Q100 110 135 120 L135 160 Q100 170 65 160 Z"
-                  fill="url(#grad2)"
-                  opacity="0.9"
-                />
-                <path
-                  d="M50 140 L80 110 L110 130 L150 90"
-                  stroke="#f0b90b"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <circle cx="150" cy="90" r="5" fill="#f0b90b" />
-              </svg>
-              <div class="text-2xl font-display font-bold text-white">ITL</div>
+              <div class="text-xl font-display font-bold text-white">ITL</div>
             </div>
           </div>
-          <!-- Floating badges -->
           <div
-            class="absolute -top-2 -right-2 w-12 h-12 bg-brand-success/20 backdrop-blur-md rounded-full flex items-center justify-center border border-brand-success/30 animate-float"
+            class="floating-badge absolute -top-1 -right-1 w-8 h-8 bg-brand-success/20 backdrop-blur-md rounded-full flex items-center justify-center border border-brand-success/30"
           >
             <svg
-              class="w-6 h-6 text-brand-success"
+              class="w-4 h-4 text-brand-success"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -484,11 +443,10 @@
             </svg>
           </div>
           <div
-            class="absolute -bottom-2 -left-2 w-12 h-12 bg-brand-accent/20 backdrop-blur-md rounded-full flex items-center justify-center border border-brand-accent/30 animate-float"
-            style="animation-delay: 1s"
+            class="floating-badge absolute -bottom-1 -left-1 w-8 h-8 bg-brand-accent/20 backdrop-blur-md rounded-full flex items-center justify-center border border-brand-accent/30"
           >
             <svg
-              class="w-6 h-6 text-brand-accent"
+              class="w-4 h-4 text-brand-accent"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -503,25 +461,25 @@
           </div>
         </div>
 
-        <!-- Bullet List Content -->
+        <!-- Bullet Points -->
         <div
-          class="max-w-lg mx-auto mb-10 hero-elem space-y-3 text-left sm:text-center"
+          class="hero-bullets max-w-md mx-auto mb-4 space-y-1.5 text-left sm:text-center px-2"
         >
-          <div class="flex items-start sm:items-center gap-3 text-gray-300">
-            <span class="text-lg">🔥</span>
-            <span class="text-base sm:text-lg font-medium"
+          <div class="flex items-start sm:items-center gap-2 text-gray-300">
+            <span class="text-base flex-shrink-0">🔥</span>
+            <span class="bullet-text text-sm font-medium"
               >DAILY 5-10 Free Signals With High Accuracy</span
             >
           </div>
-          <div class="flex items-start sm:items-center gap-3 text-gray-300">
-            <span class="text-lg">🛡️</span>
-            <span class="text-base sm:text-lg font-medium"
+          <div class="flex items-start sm:items-center gap-2 text-gray-300">
+            <span class="text-base flex-shrink-0">🛡️</span>
+            <span class="bullet-text text-sm font-medium"
               >100% Free Loss Recovery</span
             >
           </div>
-          <div class="flex items-start sm:items-center gap-3 text-gray-300">
-            <span class="text-lg">🧠</span>
-            <span class="text-base sm:text-lg font-medium"
+          <div class="flex items-start sm:items-center gap-2 text-gray-300">
+            <span class="text-base flex-shrink-0">🧠</span>
+            <span class="bullet-text text-sm font-medium"
               >100% High Quality Trades { RESULTS 💯 GUARANTEED}</span
             >
           </div>
@@ -529,15 +487,15 @@
 
         <!-- CTA Buttons -->
         <div
-          class="flex flex-col sm:flex-row items-center justify-center gap-4 hero-elem"
+          class="hero-btns flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3"
           id="join"
         >
           <a
             href="https://t.me/yourchannel"
             target="_blank"
-            class="btn-primary blink-btn w-full sm:w-auto px-8 py-4 rounded-2xl font-bold text-brand-dark text-lg flex items-center justify-center gap-3"
+            class="btn-primary blink-btn w-full sm:w-auto px-5 py-2.5 rounded-xl font-bold text-brand-dark text-sm flex items-center justify-center gap-2"
           >
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"
               />
@@ -547,48 +505,478 @@
           <a
             href="https://www.instagram.com/itl_trader_official?igsh=MWc1Y3d6eTNyMXlidA%3D%3D&utm_source=qr"
             target="_blank"
-            class="insta-btn w-full sm:w-auto px-8 py-4 rounded-2xl font-bold text-white text-lg flex items-center justify-center gap-3"
+            class="insta-btn w-full sm:w-auto px-5 py-2.5 rounded-xl font-bold text-white text-sm flex items-center justify-center gap-2"
           >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
               <path
                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
               />
             </svg>
             View on Instagram
           </a>
+          <a
+            href="https://chat.whatsapp.com/EDCVPZiIf4m4r5Fvq5XOkU"
+            target="_blank"
+            class="wa-btn w-full sm:w-auto px-5 py-2.5 rounded-xl font-bold text-white text-sm flex items-center justify-center gap-2"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+              />
+            </svg>
+            Join WhatsApp Group
+          </a>
         </div>
 
-        <p class="mt-4 text-sm text-gray-500 hero-elem">
+        <p class="hero-footer-text mt-2 text-xs text-gray-500">
           100% Free • No Credit Card Required • Instant Access
         </p>
       </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="relative py-20 px-4 sm:px-6 lg:px-8 z-10">
-      <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16">
+    <!-- PROOF / PROFIT SCREENSHOTS SECTION -->
+    <section id="proof" class="relative py-12 px-4 sm:px-6 lg:px-8 z-10">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-10">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-success/10 border border-brand-success/20 mb-4"
+          >
+            <svg
+              class="w-4 h-4 text-brand-success"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span class="text-sm font-medium text-brand-success"
+              >Verified & Transparent</span
+            >
+          </div>
           <h2
-            class="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-4 feature-title"
+            class="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-3"
+          >
+            Real Profits. <span class="text-brand-accent">Real Results.</span>
+          </h2>
+          <p class="text-gray-400 max-w-2xl mx-auto text-base">
+            Don't just take our word for it. See the actual profit screenshots
+            from our community members who followed our signals.
+          </p>
+        </div>
+
+        <!-- Stats Bar -->
+        <div
+          class="glass-card rounded-2xl p-5 mb-8 border border-brand-accent/10"
+        >
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div>
+              <div
+                class="font-display text-xl sm:text-2xl font-bold text-brand-accent"
+              >
+                $2.4M+
+              </div>
+              <div class="text-xs text-gray-500 mt-1">
+                Total Profits Generated
+              </div>
+            </div>
+            <div>
+              <div
+                class="font-display text-xl sm:text-2xl font-bold text-brand-success"
+              >
+                98.5%
+              </div>
+              <div class="text-xs text-gray-500 mt-1">Signal Accuracy</div>
+            </div>
+            <div>
+              <div
+                class="font-display text-xl sm:text-2xl font-bold text-brand-cyan"
+              >
+                5,000+
+              </div>
+              <div class="text-xs text-gray-500 mt-1">Active Members</div>
+            </div>
+            <div>
+              <div
+                class="font-display text-xl sm:text-2xl font-bold text-white"
+              >
+                24/7
+              </div>
+              <div class="text-xs text-gray-500 mt-1">Live Support</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marquee Gallery -->
+        <div class="mb-6">
+          <div class="marquee-container">
+            <div class="marquee-track">
+              <div
+                class="profit-card screenshot-frame w-64 sm:w-72 flex-shrink-0"
+              >
+                <div class="profit-badge">+$4,250</div>
+                <img
+                  src="./profit1.jpg"
+                  alt="Profit 1"
+                  class="w-full h-48 object-cover"
+                  onerror="this.parentElement.style.display = 'none'"
+                />
+                <div class="profit-overlay">
+                  <div class="flex items-center gap-2 mb-1">
+                    <div
+                      class="w-2 h-2 rounded-full bg-brand-success animate-pulse"
+                    ></div>
+                    <span class="text-xs text-brand-success font-bold"
+                      >LIVE RESULT</span
+                    >
+                  </div>
+                  <p class="text-white font-semibold text-sm">
+                    XAU/USD Buy Signal
+                  </p>
+                  <p class="text-gray-400 text-xs mt-0.5">
+                    @trader_ali • 2h ago
+                  </p>
+                </div>
+              </div>
+              <div
+                class="profit-card screenshot-frame w-64 sm:w-72 flex-shrink-0"
+              >
+                <div class="profit-badge">+$1,890</div>
+                <img
+                  src="./profit2.jpg"
+                  alt="Profit 2"
+                  class="w-full h-48 object-cover"
+                  onerror="this.parentElement.style.display = 'none'"
+                />
+                <div class="profit-overlay">
+                  <div class="flex items-center gap-2 mb-1">
+                    <div
+                      class="w-2 h-2 rounded-full bg-brand-success animate-pulse"
+                    ></div>
+                    <span class="text-xs text-brand-success font-bold"
+                      >LIVE RESULT</span
+                    >
+                  </div>
+                  <p class="text-white font-semibold text-sm">EUR/USD Scalp</p>
+                  <p class="text-gray-400 text-xs mt-0.5">
+                    @forex_king • 5h ago
+                  </p>
+                </div>
+              </div>
+              <div
+                class="profit-card screenshot-frame w-64 sm:w-72 flex-shrink-0"
+              >
+                <div class="profit-badge">+$7,600</div>
+                <img
+                  src="./profit3.jpg"
+                  alt="Profit 3"
+                  class="w-full h-48 object-cover"
+                  onerror="this.parentElement.style.display = 'none'"
+                />
+                <div class="profit-overlay">
+                  <div class="flex items-center gap-2 mb-1">
+                    <div
+                      class="w-2 h-2 rounded-full bg-brand-success animate-pulse"
+                    ></div>
+                    <span class="text-xs text-brand-success font-bold"
+                      >LIVE RESULT</span
+                    >
+                  </div>
+                  <p class="text-white font-semibold text-sm">BTC/USD Swing</p>
+                  <p class="text-gray-400 text-xs mt-0.5">
+                    @crypto_pro • 1d ago
+                  </p>
+                </div>
+              </div>
+              <div
+                class="profit-card screenshot-frame w-64 sm:w-72 flex-shrink-0"
+              >
+                <div class="profit-badge">+$3,120</div>
+                <img
+                  src="./profit4.jpg"
+                  alt="Profit 4"
+                  class="w-full h-48 object-cover"
+                  onerror="this.parentElement.style.display = 'none'"
+                />
+                <div class="profit-overlay">
+                  <div class="flex items-center gap-2 mb-1">
+                    <div
+                      class="w-2 h-2 rounded-full bg-brand-success animate-pulse"
+                    ></div>
+                    <span class="text-xs text-brand-success font-bold"
+                      >LIVE RESULT</span
+                    >
+                  </div>
+                  <p class="text-white font-semibold text-sm">
+                    US30 Index Signal
+                  </p>
+                  <p class="text-gray-400 text-xs mt-0.5">
+                    @index_master • 3h ago
+                  </p>
+                </div>
+              </div>
+              <div
+                class="profit-card screenshot-frame w-64 sm:w-72 flex-shrink-0"
+              >
+                <div class="profit-badge">+$5,800</div>
+                <img
+                  src="./profit5.jpg"
+                  alt="Profit 5"
+                  class="w-full h-48 object-cover"
+                  onerror="this.parentElement.style.display = 'none'"
+                />
+                <div class="profit-overlay">
+                  <div class="flex items-center gap-2 mb-1">
+                    <div
+                      class="w-2 h-2 rounded-full bg-brand-success animate-pulse"
+                    ></div>
+                    <span class="text-xs text-brand-success font-bold"
+                      >LIVE RESULT</span
+                    >
+                  </div>
+                  <p class="text-white font-semibold text-sm">
+                    GBP/JPY Breakout
+                  </p>
+                  <p class="text-gray-400 text-xs mt-0.5">
+                    @pips_hunter • 6h ago
+                  </p>
+                </div>
+              </div>
+              <div
+                class="profit-card screenshot-frame w-64 sm:w-72 flex-shrink-0"
+              >
+                <div class="profit-badge">+$2,950</div>
+                <img
+                  src="./profit6.jpg"
+                  alt="Profit 6"
+                  class="w-full h-48 object-cover"
+                  onerror="this.parentElement.style.display = 'none'"
+                />
+                <div class="profit-overlay">
+                  <div class="flex items-center gap-2 mb-1">
+                    <div
+                      class="w-2 h-2 rounded-full bg-brand-success animate-pulse"
+                    ></div>
+                    <span class="text-xs text-brand-success font-bold"
+                      >LIVE RESULT</span
+                    >
+                  </div>
+                  <p class="text-white font-semibold text-sm">NAS100 Scalp</p>
+                  <p class="text-gray-400 text-xs mt-0.5">
+                    @nas_winner • 4h ago
+                  </p>
+                </div>
+              </div>
+              <!-- Duplicate for seamless loop -->
+              <div
+                class="profit-card screenshot-frame w-64 sm:w-72 flex-shrink-0"
+              >
+                <div class="profit-badge">+$4,250</div>
+                <img
+                  src="./profit1.jpg"
+                  alt="Profit 1"
+                  class="w-full h-48 object-cover"
+                  onerror="this.parentElement.style.display = 'none'"
+                />
+                <div class="profit-overlay">
+                  <div class="flex items-center gap-2 mb-1">
+                    <div
+                      class="w-2 h-2 rounded-full bg-brand-success animate-pulse"
+                    ></div>
+                    <span class="text-xs text-brand-success font-bold"
+                      >LIVE RESULT</span
+                    >
+                  </div>
+                  <p class="text-white font-semibold text-sm">
+                    XAU/USD Buy Signal
+                  </p>
+                  <p class="text-gray-400 text-xs mt-0.5">
+                    @trader_ali • 2h ago
+                  </p>
+                </div>
+              </div>
+              <div
+                class="profit-card screenshot-frame w-64 sm:w-72 flex-shrink-0"
+              >
+                <div class="profit-badge">+$1,890</div>
+                <img
+                  src="./profit2.jpg"
+                  alt="Profit 2"
+                  class="w-full h-48 object-cover"
+                  onerror="this.parentElement.style.display = 'none'"
+                />
+                <div class="profit-overlay">
+                  <div class="flex items-center gap-2 mb-1">
+                    <div
+                      class="w-2 h-2 rounded-full bg-brand-success animate-pulse"
+                    ></div>
+                    <span class="text-xs text-brand-success font-bold"
+                      >LIVE RESULT</span
+                    >
+                  </div>
+                  <p class="text-white font-semibold text-sm">EUR/USD Scalp</p>
+                  <p class="text-gray-400 text-xs mt-0.5">
+                    @forex_king • 5h ago
+                  </p>
+                </div>
+              </div>
+              <div
+                class="profit-card screenshot-frame w-64 sm:w-72 flex-shrink-0"
+              >
+                <div class="profit-badge">+$7,600</div>
+                <img
+                  src="./profit3.jpg"
+                  alt="Profit 3"
+                  class="w-full h-48 object-cover"
+                  onerror="this.parentElement.style.display = 'none'"
+                />
+                <div class="profit-overlay">
+                  <div class="flex items-center gap-2 mb-1">
+                    <div
+                      class="w-2 h-2 rounded-full bg-brand-success animate-pulse"
+                    ></div>
+                    <span class="text-xs text-brand-success font-bold"
+                      >LIVE RESULT</span
+                    >
+                  </div>
+                  <p class="text-white font-semibold text-sm">BTC/USD Swing</p>
+                  <p class="text-gray-400 text-xs mt-0.5">
+                    @crypto_pro • 1d ago
+                  </p>
+                </div>
+              </div>
+              <div
+                class="profit-card screenshot-frame w-64 sm:w-72 flex-shrink-0"
+              >
+                <div class="profit-badge">+$3,120</div>
+                <img
+                  src="./profit4.jpg"
+                  alt="Profit 4"
+                  class="w-full h-48 object-cover"
+                  onerror="this.parentElement.style.display = 'none'"
+                />
+                <div class="profit-overlay">
+                  <div class="flex items-center gap-2 mb-1">
+                    <div
+                      class="w-2 h-2 rounded-full bg-brand-success animate-pulse"
+                    ></div>
+                    <span class="text-xs text-brand-success font-bold"
+                      >LIVE RESULT</span
+                    >
+                  </div>
+                  <p class="text-white font-semibold text-sm">
+                    US30 Index Signal
+                  </p>
+                  <p class="text-gray-400 text-xs mt-0.5">
+                    @index_master • 3h ago
+                  </p>
+                </div>
+              </div>
+              <div
+                class="profit-card screenshot-frame w-64 sm:w-72 flex-shrink-0"
+              >
+                <div class="profit-badge">+$5,800</div>
+                <img
+                  src="./profit5.jpg"
+                  alt="Profit 5"
+                  class="w-full h-48 object-cover"
+                  onerror="this.parentElement.style.display = 'none'"
+                />
+                <div class="profit-overlay">
+                  <div class="flex items-center gap-2 mb-1">
+                    <div
+                      class="w-2 h-2 rounded-full bg-brand-success animate-pulse"
+                    ></div>
+                    <span class="text-xs text-brand-success font-bold"
+                      >LIVE RESULT</span
+                    >
+                  </div>
+                  <p class="text-white font-semibold text-sm">
+                    GBP/JPY Breakout
+                  </p>
+                  <p class="text-gray-400 text-xs mt-0.5">
+                    @pips_hunter • 6h ago
+                  </p>
+                </div>
+              </div>
+              <div
+                class="profit-card screenshot-frame w-64 sm:w-72 flex-shrink-0"
+              >
+                <div class="profit-badge">+$2,950</div>
+                <img
+                  src="./profit6.jpg"
+                  alt="Profit 6"
+                  class="w-full h-48 object-cover"
+                  onerror="this.parentElement.style.display = 'none'"
+                />
+                <div class="profit-overlay">
+                  <div class="flex items-center gap-2 mb-1">
+                    <div
+                      class="w-2 h-2 rounded-full bg-brand-success animate-pulse"
+                    ></div>
+                    <span class="text-xs text-brand-success font-bold"
+                      >LIVE RESULT</span
+                    >
+                  </div>
+                  <p class="text-white font-semibold text-sm">NAS100 Scalp</p>
+                  <p class="text-gray-400 text-xs mt-0.5">
+                    @nas_winner • 4h ago
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <p class="text-gray-400 mb-4 max-w-lg mx-auto text-sm">
+            These are just a few examples from today. Our members share their
+            results daily.
+            <span class="text-brand-accent font-semibold"
+              >Join now and be the next success story.</span
+            >
+          </p>
+          <a
+            href="https://t.me/yourchannel"
+            target="_blank"
+            class="btn-primary blink-btn inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-brand-dark text-sm"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"
+              />
+            </svg>
+            Start Earning Today — Join Free
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="relative py-12 px-4 sm:px-6 lg:px-8 z-10">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10">
+          <h2
+            class="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-3"
           >
             Why Traders Choose <span class="text-brand-accent">ITL</span>
           </h2>
-          <p class="text-gray-400 max-w-2xl mx-auto feature-subtitle">
+          <p class="text-gray-400 max-w-2xl mx-auto">
             Professional-grade signals delivered directly to your phone. Join
             the community that actually wins.
           </p>
         </div>
-
-        <div class="grid md:grid-cols-3 gap-6">
-          <!-- Feature 1 -->
-          <div
-            class="feature-card glass-card glow-border p-8 rounded-3xl group hover:bg-brand-border/20 transition-all duration-500"
-          >
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="glass-card glow-border p-6 rounded-2xl">
             <div
-              class="feature-icon w-14 h-14 rounded-2xl bg-brand-accent/10 border border-brand-accent/20 flex items-center justify-center mb-6"
+              class="w-12 h-12 rounded-xl bg-brand-accent/10 border border-brand-accent/20 flex items-center justify-center mb-4"
             >
               <svg
-                class="w-7 h-7 text-brand-accent"
+                class="w-6 h-6 text-brand-accent"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -607,20 +995,20 @@
                 />
               </svg>
             </div>
-            <h3 class="font-display text-xl font-bold mb-3 text-white">
+            <h3 class="font-display text-lg font-bold mb-2 text-white">
               Daily 5-10 Free Signals
             </h3>
-            <p class="text-gray-400 leading-relaxed">
+            <p class="text-gray-400 text-sm leading-relaxed">
               High accuracy trading signals delivered straight to your device.
               Forex, Crypto, and Indices covered daily with precise entry and
               exit points.
             </p>
             <div
-              class="mt-6 flex items-center gap-2 text-brand-accent text-sm font-semibold"
+              class="mt-4 flex items-center gap-2 text-brand-accent text-xs font-semibold"
             >
-              <span>98.5% Accuracy Rate</span>
-              <svg
-                class="w-4 h-4"
+              <span>98.5% Accuracy Rate</span
+              ><svg
+                class="w-3 h-3"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -634,16 +1022,12 @@
               </svg>
             </div>
           </div>
-
-          <!-- Feature 2 -->
-          <div
-            class="feature-card glass-card glow-border p-8 rounded-3xl group hover:bg-brand-border/20 transition-all duration-500"
-          >
+          <div class="glass-card glow-border p-6 rounded-2xl">
             <div
-              class="feature-icon w-14 h-14 rounded-2xl bg-brand-success/10 border border-brand-success/20 flex items-center justify-center mb-6"
+              class="w-12 h-12 rounded-xl bg-brand-success/10 border border-brand-success/20 flex items-center justify-center mb-4"
             >
               <svg
-                class="w-7 h-7 text-brand-success"
+                class="w-6 h-6 text-brand-success"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -656,20 +1040,20 @@
                 />
               </svg>
             </div>
-            <h3 class="font-display text-xl font-bold mb-3 text-white">
+            <h3 class="font-display text-lg font-bold mb-2 text-white">
               100% Free Loss Recovery
             </h3>
-            <p class="text-gray-400 leading-relaxed">
+            <p class="text-gray-400 text-sm leading-relaxed">
               Made a losing trade? Our expert analysts provide recovery
               strategies and compensatory signals to get your account back to
-              green. We've got your back.
+              green.
             </p>
             <div
-              class="mt-6 flex items-center gap-2 text-brand-success text-sm font-semibold"
+              class="mt-4 flex items-center gap-2 text-brand-success text-xs font-semibold"
             >
-              <span>Risk Management Included</span>
-              <svg
-                class="w-4 h-4"
+              <span>Risk Management Included</span
+              ><svg
+                class="w-3 h-3"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -683,16 +1067,12 @@
               </svg>
             </div>
           </div>
-
-          <!-- Feature 3 -->
-          <div
-            class="feature-card glass-card glow-border p-8 rounded-3xl group hover:bg-brand-border/20 transition-all duration-500"
-          >
+          <div class="glass-card glow-border p-6 rounded-2xl">
             <div
-              class="feature-icon w-14 h-14 rounded-2xl bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center mb-6"
+              class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center mb-4"
             >
               <svg
-                class="w-7 h-7 text-brand-cyan"
+                class="w-6 h-6 text-brand-cyan"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -705,20 +1085,20 @@
                 />
               </svg>
             </div>
-            <h3 class="font-display text-xl font-bold mb-3 text-white">
+            <h3 class="font-display text-lg font-bold mb-2 text-white">
               High Quality Trades
             </h3>
-            <p class="text-gray-400 leading-relaxed">
+            <p class="text-gray-400 text-sm leading-relaxed">
               Every signal is backed by technical analysis, market structure,
               and institutional order flow. Results 💯 Guaranteed with full
               transparency.
             </p>
             <div
-              class="mt-6 flex items-center gap-2 text-brand-cyan text-sm font-semibold"
+              class="mt-4 flex items-center gap-2 text-brand-cyan text-xs font-semibold"
             >
-              <span>Verified Track Record</span>
-              <svg
-                class="w-4 h-4"
+              <span>Verified Track Record</span
+              ><svg
+                class="w-3 h-3"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -736,203 +1116,97 @@
       </div>
     </section>
 
-    <!-- Stats / Social Proof Section -->
-    <section id="results" class="relative py-20 px-4 sm:px-6 lg:px-8 z-10">
-      <div class="max-w-6xl mx-auto">
-        <div
-          class="glass-card rounded-3xl p-8 sm:p-12 border border-brand-accent/10"
-        >
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div class="stat-item">
-              <div
-                class="font-display text-3xl sm:text-4xl font-bold text-brand-accent mb-2"
-              >
-                <span class="counter" data-target="5000" data-suffix="k+"
-                  >0</span
-                >
-              </div>
-              <div class="text-sm text-gray-400">Active Traders</div>
-            </div>
-            <div class="stat-item">
-              <div
-                class="font-display text-3xl sm:text-4xl font-bold text-brand-success mb-2"
-              >
-                <span class="counter" data-target="98" data-suffix="%">0</span>
-              </div>
-              <div class="text-sm text-gray-400">Win Rate</div>
-            </div>
-            <div class="stat-item">
-              <div
-                class="font-display text-3xl sm:text-4xl font-bold text-brand-cyan mb-2"
-              >
-                <span class="counter" data-target="1500" data-suffix="+"
-                  >0</span
-                >
-              </div>
-              <div class="text-sm text-gray-400">Pips Monthly</div>
-            </div>
-            <div class="stat-item">
-              <div
-                class="font-display text-3xl sm:text-4xl font-bold text-white mb-2"
-              >
-                <span class="counter" data-target="24" data-suffix="/7">0</span>
-              </div>
-              <div class="text-sm text-gray-400">Hour Support</div>
-            </div>
-          </div>
-
-          <div class="mt-12 pt-8 border-t border-brand-border/50">
-            <div
-              class="flex flex-col md:flex-row items-center justify-between gap-6"
-            >
-              <div class="flex items-center gap-4">
-                <div class="flex -space-x-3">
-                  <div
-                    class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-accent to-orange-600 border-2 border-brand-dark flex items-center justify-center text-xs font-bold text-brand-dark"
-                  >
-                    JD
-                  </div>
-                  <div
-                    class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-cyan to-blue-600 border-2 border-brand-dark flex items-center justify-center text-xs font-bold text-white"
-                  >
-                    MK
-                  </div>
-                  <div
-                    class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-success to-emerald-600 border-2 border-brand-dark flex items-center justify-center text-xs font-bold text-white"
-                  >
-                    AR
-                  </div>
-                  <div
-                    class="w-10 h-10 rounded-full bg-brand-border border-2 border-brand-dark flex items-center justify-center text-xs font-bold text-gray-400"
-                  >
-                    +5k
-                  </div>
-                </div>
-                <div class="text-sm text-gray-400">
-                  <span class="text-white font-semibold">5,000+ traders</span>
-                  joined this month
-                </div>
-              </div>
-              <a
-                href="https://www.instagram.com/itl_trader_official?igsh=MWc1Y3d6eTNyMXlidA%3D%3D&utm_source=qr"
-                target="_blank"
-                class="flex items-center gap-2 text-sm text-gray-400 hover:text-brand-accent transition-colors"
-              >
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path
-                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"
-                  />
-                </svg>
-                See latest results on Instagram
-                <svg
-                  class="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Final CTA Section -->
-    <section class="relative py-24 px-4 sm:px-6 lg:px-8 z-10">
+    <section class="relative py-12 px-4 sm:px-6 lg:px-8 z-10">
       <div class="max-w-4xl mx-auto text-center">
         <div
-          class="glass-card glow-border rounded-3xl p-8 sm:p-16 relative overflow-hidden"
+          class="glass-card rounded-3xl p-6 sm:p-10 border border-brand-accent/10"
         >
+          <h2
+            class="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-3"
+          >
+            Ready to Start <span class="text-brand-accent">Earning?</span>
+          </h2>
+          <p class="text-gray-400 text-sm sm:text-base mb-6 max-w-lg mx-auto">
+            Join
+            <span class="text-white font-semibold">Trade With ITL</span> today
+            and get instant access to premium signals completely free.
+          </p>
           <div
-            class="absolute inset-0 bg-gradient-to-br from-brand-accent/5 to-brand-cyan/5"
-          ></div>
-          <div class="relative z-10">
-            <h2
-              class="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-6"
+            class="flex flex-col sm:flex-row items-center justify-center gap-3"
+          >
+            <a
+              href="https://t.me/yourchannel"
+              target="_blank"
+              class="btn-primary blink-btn w-full sm:w-auto px-6 py-3 rounded-xl font-bold text-brand-dark text-sm flex items-center justify-center gap-2"
             >
-              Ready to Start <span class="text-brand-accent">Earning?</span>
-            </h2>
-            <p class="text-gray-400 text-lg mb-10 max-w-xl mx-auto">
-              Join
-              <span class="text-white font-semibold">Trade With ITL</span>
-              today and get instant access to premium signals completely free.
-            </p>
-
-            <div
-              class="flex flex-col sm:flex-row items-center justify-center gap-4"
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"
+                />
+              </svg>
+              Join Free Telegram
+            </a>
+            <a
+              href="https://chat.whatsapp.com/EDCVPZiIf4m4r5Fvq5XOkU"
+              target="_blank"
+              class="wa-btn w-full sm:w-auto px-6 py-3 rounded-xl font-bold text-white text-sm flex items-center justify-center gap-2"
             >
-              <a
-                href="https://t.me/yourchannel"
-                target="_blank"
-                class="btn-primary blink-btn w-full sm:w-auto px-10 py-5 rounded-2xl font-bold text-brand-dark text-lg flex items-center justify-center gap-3"
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                />
+              </svg>
+              Join WhatsApp
+            </a>
+          </div>
+          <div
+            class="mt-4 flex flex-wrap items-center justify-center gap-4 text-xs text-gray-500"
+          >
+            <div class="flex items-center gap-1">
+              <svg
+                class="w-4 h-4 text-brand-success"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"
-                  />
-                </svg>
-                Join Free Telegram Channel
-              </a>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                /></svg
+              >Instant Access
             </div>
-
-            <div
-              class="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500"
-            >
-              <div class="flex items-center gap-2">
-                <svg
-                  class="w-5 h-5 text-brand-success"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-                Instant Access
-              </div>
-              <div class="flex items-center gap-2">
-                <svg
-                  class="w-5 h-5 text-brand-success"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-                No Hidden Fees
-              </div>
-              <div class="flex items-center gap-2">
-                <svg
-                  class="w-5 h-5 text-brand-success"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-                Cancel Anytime
-              </div>
+            <div class="flex items-center gap-1">
+              <svg
+                class="w-4 h-4 text-brand-success"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                /></svg
+              >No Hidden Fees
+            </div>
+            <div class="flex items-center gap-1">
+              <svg
+                class="w-4 h-4 text-brand-success"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                /></svg
+              >Cancel Anytime
             </div>
           </div>
         </div>
@@ -941,89 +1215,51 @@
 
     <!-- Footer -->
     <footer
-      class="relative z-10 border-t border-brand-border/30 bg-brand-dark/50 backdrop-blur-xl pb-24"
+      class="relative z-10 border-t border-brand-border/30 bg-brand-dark/50 backdrop-blur-xl pb-20"
     >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="grid md:grid-cols-3 gap-8 mb-8">
-          <div>
-            <div class="flex items-center gap-2 mb-4">
-              <div
-                class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-accent to-orange-500 flex items-center justify-center font-bold text-brand-dark text-sm"
-              >
-                ITL
-              </div>
-              <span class="font-display font-bold text-lg">Trade With ITL</span>
-            </div>
-            <p class="text-gray-500 text-sm leading-relaxed">
-              The most profitable free trading community. Daily signals, loss
-              recovery, and guaranteed results.
-            </p>
-          </div>
-          <div>
-            <h4 class="font-semibold text-white mb-4">Quick Links</h4>
-            <ul class="space-y-2 text-sm text-gray-500">
-              <li>
-                <a
-                  href="#features"
-                  class="hover:text-brand-accent transition-colors"
-                  >Features</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#results"
-                  class="hover:text-brand-accent transition-colors"
-                  >Results</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://www.instagram.com/itl_trader_official?igsh=MWc1Y3d6eTNyMXlidA%3D%3D&utm_source=qr"
-                  target="_blank"
-                  class="hover:text-brand-accent transition-colors"
-                  >Instagram Proof</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="font-semibold text-white mb-4">Legal</h4>
-            <p class="text-gray-600 text-xs leading-relaxed">
-              Trading involves risk. Past performance does not guarantee future
-              results. Always trade responsibly and never invest more than you
-              can afford to lose.
-            </p>
-          </div>
-        </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div
-          class="border-t border-brand-border/30 pt-8 flex flex-col md:flex-row items-center justify-between gap-4"
+          class="flex flex-col md:flex-row items-center justify-between gap-4"
         >
-          <p class="text-gray-600 text-sm">
+          <div class="flex items-center gap-2">
+            <div
+              class="w-6 h-6 rounded bg-gradient-to-br from-brand-accent to-orange-500 flex items-center justify-center font-bold text-brand-dark text-xs"
+            >
+              ITL
+            </div>
+            <span class="font-display font-bold text-sm">Trade With ITL</span>
+          </div>
+          <p class="text-gray-600 text-xs">
             © 2026 Trade With ITL. All rights reserved.
           </p>
-          <div class="flex items-center gap-4">
+          <div class="flex items-center gap-3">
             <a
               href="https://www.instagram.com/itl_trader_official?igsh=MWc1Y3d6eTNyMXlidA%3D%3D&utm_source=qr"
               target="_blank"
               class="text-gray-500 hover:text-white transition-colors"
-            >
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              ><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path
-                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
-                />
-              </svg>
-            </a>
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"
+                /></svg
+            ></a>
             <a
               href="https://t.me/yourchannel"
               target="_blank"
               class="text-gray-500 hover:text-white transition-colors"
-            >
-              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              ><svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                 <path
                   d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"
-                />
-              </svg>
-            </a>
+                /></svg
+            ></a>
+            <a
+              href="https://chat.whatsapp.com/EDCVPZiIf4m4r5Fvq5XOkU"
+              target="_blank"
+              class="text-gray-500 hover:text-white transition-colors"
+              ><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                /></svg
+            ></a>
           </div>
         </div>
       </div>
@@ -1031,8 +1267,8 @@
 
     <!-- Live Ticker -->
     <div class="ticker-wrap">
-      <div class="ticker py-3">
-        <div class="flex items-center gap-8 text-sm font-mono">
+      <div class="ticker py-2">
+        <div class="flex items-center gap-6 text-xs font-mono">
           <span class="text-gray-400"
             >EUR/USD <span class="text-brand-success">▲ 1.0845</span></span
           >
@@ -1065,7 +1301,6 @@
             >NAS100 <span class="text-brand-success">▲ 18,420</span></span
           >
           <span class="text-gray-600">|</span>
-          <!-- Duplicate for seamless loop -->
           <span class="text-gray-400"
             >EUR/USD <span class="text-brand-success">▲ 1.0845</span></span
           >
@@ -1103,107 +1338,11 @@
     </div>
 
     <script>
-      // Generate background particles
-      const particlesContainer = document.getElementById("particles");
-      for (let i = 0; i < 30; i++) {
-        const particle = document.createElement("div");
-        particle.className = "particle";
-        particle.style.left = Math.random() * 100 + "%";
-        particle.style.animationDelay = Math.random() * 20 + "s";
-        particle.style.animationDuration = 15 + Math.random() * 10 + "s";
-        particle.style.width = 2 + Math.random() * 4 + "px";
-        particle.style.height = particle.style.width;
-        particlesContainer.appendChild(particle);
-      }
-
-      // Mobile menu toggle
       const mobileMenuBtn = document.getElementById("mobileMenuBtn");
       const mobileMenu = document.getElementById("mobileMenu");
       mobileMenuBtn.addEventListener("click", () => {
         mobileMenu.classList.toggle("hidden");
       });
-
-      // GSAP Animations
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Hero elements stagger
-      gsap.from(".hero-elem", {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.15,
-        ease: "power3.out",
-        delay: 0.2,
-      });
-
-      // Feature cards
-      gsap.from(".feature-card", {
-        scrollTrigger: {
-          trigger: "#features",
-          start: "top 80%",
-        },
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power3.out",
-      });
-
-      gsap.from(".feature-title, .feature-subtitle", {
-        scrollTrigger: {
-          trigger: "#features",
-          start: "top 80%",
-        },
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power3.out",
-      });
-
-      // Number Counter Animation
-      function animateCounters() {
-        const counters = document.querySelectorAll(".counter");
-        counters.forEach((counter) => {
-          const target = parseInt(counter.getAttribute("data-target"));
-          const suffix = counter.getAttribute("data-suffix") || "";
-          const duration = 2000;
-          const startTime = performance.now();
-
-          function updateCounter(currentTime) {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-
-            // Ease out cubic
-            const easeProgress = 1 - Math.pow(1 - progress, 3);
-            const current = Math.floor(easeProgress * target);
-
-            // Format number
-            let displayValue = current;
-            if (target >= 1000 && suffix === "k+") {
-              displayValue = (current / 1000).toFixed(1);
-            }
-
-            counter.textContent = displayValue + suffix;
-
-            if (progress < 1) {
-              requestAnimationFrame(updateCounter);
-            }
-          }
-
-          requestAnimationFrame(updateCounter);
-        });
-      }
-
-      // Trigger counter animation when stats section is visible
-      ScrollTrigger.create({
-        trigger: "#results",
-        start: "top 80%",
-        onEnter: () => animateCounters(),
-        once: true,
-      });
-
-      // Smooth scroll for anchor links
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           e.preventDefault();
@@ -1213,19 +1352,6 @@
             mobileMenu.classList.add("hidden");
           }
         });
-      });
-
-      // Navbar scroll effect
-      let lastScroll = 0;
-      window.addEventListener("scroll", () => {
-        const nav = document.querySelector("nav");
-        const currentScroll = window.pageYOffset;
-        if (currentScroll > 100) {
-          nav.classList.add("shadow-lg", "shadow-brand-accent/5");
-        } else {
-          nav.classList.remove("shadow-lg", "shadow-brand-accent/5");
-        }
-        lastScroll = currentScroll;
       });
     </script>
   </body>
